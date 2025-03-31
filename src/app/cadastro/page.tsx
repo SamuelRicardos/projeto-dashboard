@@ -68,7 +68,7 @@ export default function Cadastro() {
           <span className="mx-1"></span>
           <button 
             onClick={() => router.push("/")}
-            className="text-blue-500 hover:underline"
+            className="text-blue-500 hover:underline cursor-pointer"
           >
             Faça login
           </button>
