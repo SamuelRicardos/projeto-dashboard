@@ -16,7 +16,7 @@ export default function Home() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push("/dashboard"); // Redireciona após login bem-sucedido
+      router.push("/dashboard");
     } catch (error) {
       setError("Email ou senha incorretos.");
     }
@@ -46,7 +46,7 @@ export default function Home() {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition"
+            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition cursor-pointer"
           >
             Entrar
           </button>

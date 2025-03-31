@@ -5,17 +5,18 @@ import { Button } from "../ui/button"
 import Link from "next/link"
 import { Home, LogOut, Package, PanelBottom, Settings2, ShoppingBag, Users } from "lucide-react"
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
-import { signOut } from "firebase/auth" // Importando signOut do Firebase
-import { auth } from "../../lib/firebase" // Certifique-se de que o caminho está correto
+import { signOut } from "firebase/auth"
+import { auth } from "../../lib/firebase"
 import { useRouter } from "next/navigation"
+import { DialogTitle } from "@/components/ui/dialog"
 
 export function Sidebar() {
     const router = useRouter()
 
     const handleLogout = async () => {
         try {
-            await signOut(auth) // Desconectar o usuário
-            router.push("/") // Redirecionar para a tela de login
+            await signOut(auth)
+            router.push("/")
         } catch (error) {
             console.error("Erro ao sair:", error)
         }
@@ -81,7 +82,7 @@ export function Sidebar() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <button
-                                    onClick={handleLogout} // Lida com o clique no botão "Sair"
+                                    onClick={handleLogout}
                                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
                                 >
                                     <LogOut className="h-5 w-5" />
@@ -105,8 +106,9 @@ export function Sidebar() {
                             </Button>
                         </SheetTrigger>
 
-                        <SheetContent side="left" className='sm:max-w-x'>
-                            {/* ver depois o p-4 */}
+                        <SheetContent side="left" className="sm:max-w-x" aria-labelledby="menu-title">
+                            <DialogTitle className="sr-only">Menu de navegação</DialogTitle>
+
                             <nav className="grid gap-6 text-lg font-medium p-4">
                                 <Link href="#" className="flex h-10 w-10 bg-primary rounded-full text-lg items-center justify-center text-primary-foreground md:text-base gap-2"
                                     prefetch={false}

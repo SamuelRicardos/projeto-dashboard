@@ -1,11 +1,38 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation';
 import { ChartOverview } from "@/components/chart";
 import { Sales } from "@/components/sales";
+import { auth } from "../../lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BadgeDollarSign, DollarSign, Percent, Users } from "lucide-react";
 import { Sidebar } from '@/components/sidebar';
 
-export default function page() {
+export default function Dashboard() {
+
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Verificar se o usuário está autenticado
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        router.push("/");
+      } else {
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [router]);
+
+  if (loading) {
+    return <div className="flex justify-center items-center h-screen">Carregando...</div>;
+  }
+
   return (
     <main className="sm:ml-14 p-4">
     <Sidebar/>
