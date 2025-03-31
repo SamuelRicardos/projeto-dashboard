@@ -17,7 +17,6 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Verificar se o usuário está autenticado
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (!user) {
         router.push("/");

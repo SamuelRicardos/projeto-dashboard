@@ -51,6 +51,11 @@ export default function Home() {
             Entrar
           </button>
         </form>
+        <div className="text-center mt-4">
+          <button onClick={() => router.push("/resetpassword")} className="text-blue-500 hover:underline text-sm">
+            Esqueci minha senha
+          </button>
+        </div>
         <p className="text-center text-sm mt-4">
           Não tem uma conta?
           <span className="mx-1"></span>
