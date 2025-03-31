@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard Financeiro
 
-## Getting Started
+Este é um projeto de **Dashboard Financeiro** desenvolvido com [Next.js](https://nextjs.org), utilizando autenticação via **Firebase** e interface estilizada com **Tailwind CSS** e **Shadcn UI**.
 
-First, run the development server:
+## Funcionalidades
+
+- 🔒 Autenticação de usuários (Cadastro & Login) com Firebase
+- 📊 Painel interativo para visualização financeira
+- 💳 Gerenciamento e acompanhamento de despesas
+- 📈 Visualização de dados com gráficos e tabelas
+- 🎨 Interface moderna e responsiva com Tailwind CSS
+- 🚀 Alto desempenho e otimização com Next.js
+
+## Como iniciar o projeto
+
+Primeiro, clone o repositório e instale as dependências:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clonar o repositório
+git clone https://github.com/seuusuario/projeto-dashboard.git
+
+# Instalar dependências
+npm install  # ou yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Depois, inicie o servidor de desenvolvimento:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev  # ou yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abra [http://localhost:3000](http://localhost:3000) no navegador para acessar o dashboard.
 
-## Learn More
+## Configuração das variáveis de ambiente
 
-To learn more about Next.js, take a look at the following resources:
+Vá em na pasta lib e coloque as configurações do seu projeto do Firebase em firebase.js:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_BUCKET.appspot.com",
+  messagingSenderId: "SEU_SENDER_ID",
+  appId: "SEU_APP_ID",
+};
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estrutura do projeto
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+/dashboard
+├── app/          # Páginas e componentes do Next.js
+├── components/   # Componentes reutilizáveis de UI
+├── lib/          # Configuração do Firebase e utils
+├── public/       # Arquivos estáticos
+```
