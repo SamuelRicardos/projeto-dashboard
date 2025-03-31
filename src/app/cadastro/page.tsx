@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function Cadastro() {
   const [name, setName] = useState("");
@@ -19,10 +20,21 @@ export default function Cadastro() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-
-      router.push("/");
+      
+      toast.success("Cadastro realizado com sucesso!", {
+        description: `Seja bem-vindo, ${name}!`,
+        position: "top-right",
+        style: { backgroundColor: "#22c55e", color: "#ffffff" },
+      });
+      
+      setTimeout(() => router.push("/"), 2000);
     } catch (error) {
       setError("Erro ao criar conta. Tente novamente.");
+      toast.error("Erro ao cadastrar", {
+        description: "Verifique os dados e tente novamente.",
+        position: "top-right",
+        style: { backgroundColor: "#ef4444", color: "#ffffff" },
+      });
     }
   };
 
