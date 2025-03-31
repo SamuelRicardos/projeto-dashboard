@@ -1,10 +1,26 @@
+"use client"
+
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { Button } from "../ui/button"
 import Link from "next/link"
 import { Home, LogOut, Package, PanelBottom, Settings2, ShoppingBag, Users } from "lucide-react"
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
+import { signOut } from "firebase/auth" // Importando signOut do Firebase
+import { auth } from "../../lib/firebase" // Certifique-se de que o caminho está correto
+import { useRouter } from "next/navigation"
 
 export function Sidebar() {
+    const router = useRouter()
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth) // Desconectar o usuário
+            router.push("/") // Redirecionar para a tela de login
+        } catch (error) {
+            console.error("Erro ao sair:", error)
+        }
+    }
+
     return (
         <div className="flex w-full flex-col bg-muted/40">
 
@@ -20,8 +36,8 @@ export function Sidebar() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link href="#" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground">
-                                <Home className="h-5 w-5"></Home>
-                                <span className="sr-only">Início</span>
+                                    <Home className="h-5 w-5"></Home>
+                                    <span className="sr-only">Início</span>
                                 </Link>
                             </TooltipTrigger>
                             <TooltipContent side="right">Início</TooltipContent>
@@ -30,8 +46,8 @@ export function Sidebar() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link href="#" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground">
-                                <ShoppingBag className="h-5 w-5"></ShoppingBag>
-                                <span className="sr-only">Pedidos</span>
+                                    <ShoppingBag className="h-5 w-5"></ShoppingBag>
+                                    <span className="sr-only">Pedidos</span>
                                 </Link>
                             </TooltipTrigger>
                             <TooltipContent side="right">Pedidos</TooltipContent>
@@ -40,8 +56,8 @@ export function Sidebar() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link href="#" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground">
-                                <Package className="h-5 w-5"></Package>
-                                <span className="sr-only">Produtos</span>
+                                    <Package className="h-5 w-5"></Package>
+                                    <span className="sr-only">Produtos</span>
                                 </Link>
                             </TooltipTrigger>
                             <TooltipContent side="right">Produtos</TooltipContent>
@@ -50,8 +66,8 @@ export function Sidebar() {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Link href="#" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground">
-                                <Settings2 className="h-5 w-5 text-red-500"></Settings2>
-                                <span className="sr-only">Configurações</span>
+                                    <Settings2 className="h-5 w-5 text-red-500"></Settings2>
+                                    <span className="sr-only">Configurações</span>
                                 </Link>
                             </TooltipTrigger>
                             <TooltipContent side="right">Configurações</TooltipContent>
@@ -64,10 +80,13 @@ export function Sidebar() {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <Link href="#" className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground">
-                                <LogOut className="h-5 w-5"></LogOut>
-                                <span className="sr-only">Sair</span>
-                                </Link>
+                                <button
+                                    onClick={handleLogout} // Lida com o clique no botão "Sair"
+                                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+                                >
+                                    <LogOut className="h-5 w-5" />
+                                    <span className="sr-only">Sair</span>
+                                </button>
                             </TooltipTrigger>
                             <TooltipContent side="right">Sair</TooltipContent>
                         </Tooltip>
