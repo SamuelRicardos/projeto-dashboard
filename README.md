@@ -49,7 +49,7 @@ const firebaseConfig = {
 ## Estrutura do projeto
 
 ```
-/dashboard-financeiro
+/dashboard
 ├── app/          # Páginas e componentes do Next.js
 ├── components/   # Componentes reutilizáveis de UI
 ├── lib/          # Configuração do Firebase e utils
