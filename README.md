@@ -17,7 +17,7 @@ Primeiro, clone o repositório e instale as dependências:
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/seuusuario/dashboard-financeiro.git
+git clone https://github.com/seuusuario/projeto-dashboard.git
 
 # Instalar dependências
 npm install  # ou yarn install
