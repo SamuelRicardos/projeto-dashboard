@@ -101,7 +101,7 @@ export function Sidebar() {
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button size="icon" variant="outline" className="sm:hidden">
-                                <PanelBottom className='w-5 h-5'></PanelBottom>
+                                <PanelBottom className='w-5 h-5' />
                                 <span className="sr-only">Abrir / fechar menu</span>
                             </Button>
                         </SheetTrigger>
@@ -110,48 +110,44 @@ export function Sidebar() {
                             <DialogTitle className="sr-only">Menu de navegação</DialogTitle>
 
                             <nav className="grid gap-6 text-lg font-medium p-4">
-                                <Link href="#" className="flex h-10 w-10 bg-primary rounded-full text-lg items-center justify-center text-primary-foreground md:text-base gap-2"
-                                    prefetch={false}
-                                >
-                                    <Package className="h-5 w-5 transition-all"></Package>
+                                <Link href="#" className="flex h-10 w-10 bg-primary rounded-full text-lg items-center justify-center text-primary-foreground md:text-base gap-2" prefetch={false}>
+                                    <Package className="h-5 w-5 transition-all" />
                                     <span className="sr-only">Logo do projeto</span>
                                 </Link>
 
-                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    prefetch={false}
-                                >
-                                    <Home className="h-5 w-5 transition-all"></Home>
+                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground" prefetch={false}>
+                                    <Home className="h-5 w-5 transition-all" />
                                     Início
                                 </Link>
 
-                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    prefetch={false}
-                                >
-                                    <ShoppingBag className="h-5 w-5 transition-all"></ShoppingBag>
+                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground" prefetch={false}>
+                                    <ShoppingBag className="h-5 w-5 transition-all" />
                                     Pedidos
                                 </Link>
 
-                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    prefetch={false}
-                                >
-                                    <Package className="h-5 w-5 transition-all"></Package>
+                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground" prefetch={false}>
+                                    <Package className="h-5 w-5 transition-all" />
                                     Produtos
                                 </Link>
 
-                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    prefetch={false}
-                                >
-                                    <Users className="h-5 w-5 transition-all"></Users>
+                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground" prefetch={false}>
+                                    <Users className="h-5 w-5 transition-all" />
                                     Clientes
                                 </Link>
 
-                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    prefetch={false}
-                                >
-                                    <Settings2 className="h-5 w-5 transition-all"></Settings2>
+                                <Link href="#" className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground" prefetch={false}>
+                                    <Settings2 className="h-5 w-5 transition-all" />
                                     Configurações
                                 </Link>
                             </nav>
+
+                            <div className="mt-auto flex items-center justify-start p-4">
+                                <button onClick={handleLogout} className="flex items-center gap-2 text-red-500 hover:text-red-600">
+                                    <LogOut className="h-5 w-5" />
+                                    <span>Sair</span>
+                                    <span className="sr-only">Sair</span>
+                                </button>
+                            </div>
                         </SheetContent>
                     </Sheet>
                     <h2>Menu</h2>
