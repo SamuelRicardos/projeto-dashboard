@@ -11,17 +11,16 @@ export default function Cadastro() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [passwordError, setPasswordError] = useState<string | null>(null); // Estado para erro de senha
+  const [passwordError, setPasswordError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleRegister = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setError(null);
-    setPasswordError(null); // Limpa qualquer erro de senha anterior
+    setPasswordError(null);
     setLoading(true);
 
-    // Verificando se a senha tem no mínimo 6 caracteres
     if (password.length < 6) {
       setPasswordError("A senha deve ter no mínimo 6 caracteres.");
       setLoading(false);
@@ -95,7 +94,7 @@ export default function Cadastro() {
             />
           </div>
           {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
-          {passwordError && <p className="text-red-500 text-sm text-center mb-4">{passwordError}</p>} {/* Exibe o erro da senha */}
+          {passwordError && <p className="text-red-500 text-sm text-center mb-4">{passwordError}</p>}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition cursor-pointer"
