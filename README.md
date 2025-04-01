@@ -2,6 +2,20 @@
 
 Este é um projeto de **Dashboard Financeiro** desenvolvido com [Next.js](https://nextjs.org), utilizando autenticação via **Firebase** e interface estilizada com **Tailwind CSS** e **Shadcn UI**.
 
+## Tecnologias utilizadas
+
+⚛️ React: Utilizado para criar a interface de forma modular e eficiente, permitindo que o estado da aplicação seja gerenciado facilmente com componentes reativos.
+
+⚡ Next.js: Escolhido por ser uma framework otimizada para SEO e renderização do lado do servidor (SSR), o que melhora a performance e torna o app mais escalável.
+
+🌪️ TailwindCSS: Utilizado para um design customizável e responsivo, garantindo uma estilização rápida e flexível sem complicações.
+
+🎨 ShadcnUI: Oferece componentes prontos, clean e altamente personalizáveis, que se integram bem com o TailwindCSS, acelerando o desenvolvimento sem perder qualidade no design.
+
+🔥 Firebase: Usado para autenticação de usuários e backend sem servidor, proporcionando uma solução fácil e escalável para o gerenciamento de dados e usuários.
+
+📊 Recharts: Biblioteca utilizada para a criação de gráficos interativos e dinâmicos, permitindo visualizar dados financeiros de forma clara e intuitiva, facilitando a análise e tomada de decisões.
+
 ## Funcionalidades
 
 - 🔒 Autenticação de usuários (Cadastro & Login) com Firebase (Use esse usuário para acessar o dashboard, email: test@gmail.com, senha:123456)
