@@ -11,11 +11,22 @@ export default function Cadastro() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null); // Estado para erro de senha
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleRegister = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setError(null);
+    setPasswordError(null); // Limpa qualquer erro de senha anterior
+    setLoading(true);
+
+    // Verificando se a senha tem no mínimo 6 caracteres
+    if (password.length < 6) {
+      setPasswordError("A senha deve ter no mínimo 6 caracteres.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -35,6 +46,8 @@ export default function Cadastro() {
         position: "top-right",
         style: { backgroundColor: "#ef4444", color: "#ffffff" },
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,7 +55,6 @@ export default function Cadastro() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Cadastro</h2>
-        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome completo</label>
@@ -80,11 +92,14 @@ export default function Cadastro() {
               required
             />
           </div>
+          {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+          {passwordError && <p className="text-red-500 text-sm text-center mb-4">{passwordError}</p>} {/* Exibe o erro da senha */}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition cursor-pointer"
+            disabled={loading}
           >
-            Cadastrar
+            {loading ? "Carregando..." : "Cadastrar"}
           </button>
         </form>
         <p className="text-center text-sm mt-4">

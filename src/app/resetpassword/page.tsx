@@ -3,24 +3,33 @@
 import { useState } from "react";
 import { auth } from "../../lib/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function ResetPassword() {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage(null);
-    setError(null);
     setLoading(true);
 
     try {
       await sendPasswordResetEmail(auth, email);
-      setMessage("Email enviado! Verifique sua caixa de entrada.");
+      toast.success("Email enviado! Verifique sua caixa de entrada.", {
+        position: "top-right",
+        style: { backgroundColor: "#22c55e", color: "#ffffff" },
+      });
+
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
     } catch (error: any) {
-      setError("Erro ao enviar email. Verifique o email informado.");
+      toast.error("Erro ao enviar email. Verifique o email informado.", {
+        position: "top-right",
+        style: { backgroundColor: "#ef4444", color: "#ffffff" },
+      });
     } finally {
       setLoading(false);
     }
@@ -30,8 +39,6 @@ export default function ResetPassword() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Redefinir senha</h2>
-        {message && <p className="text-green-500 text-sm text-center mb-4">{message}</p>}
-        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
 
         <form onSubmit={handleResetPassword} className="space-y-4">
           <input

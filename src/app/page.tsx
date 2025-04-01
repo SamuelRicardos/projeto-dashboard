@@ -71,7 +71,7 @@ export default function Home() {
           </div>
           <button
             type="submit"
-            className={`w-full py-3 rounded-lg transition cursor-pointer ${isLoading ? 'bg-gray-400' : 'bg-blue-500 text-white hover:bg-blue-600'}`} 
+            className={`w-full py-3 rounded-lg transition cursor-pointer ${isLoading ? 'bg-blue-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`} 
             disabled={isLoading}
           >
             {isLoading ? "Carregando..." : "Entrar"}
