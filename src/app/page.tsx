@@ -25,6 +25,7 @@ export default function Home() {
       toast.success(`Bem-vindo(a), ${user.displayName || 'Visitante'}!`, {
         position: "top-right",
         style: { backgroundColor: "#22c55e", color: "#ffffff" },
+        duration: 2000,
       });
 
       router.push("/dashboard");
@@ -33,6 +34,7 @@ export default function Home() {
       toast.error("Email ou senha incorretos.", {
         position: "top-right",
         style: { backgroundColor: "#ef4444", color: "#ffffff" },
+        duration: 2000,
       });
     } finally {
       setIsLoading(false);
@@ -43,7 +45,6 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
@@ -69,6 +70,7 @@ export default function Home() {
               required
             />
           </div>
+          {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
           <button
             type="submit"
             className={`w-full py-3 rounded-lg transition cursor-pointer ${isLoading ? 'bg-blue-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`} 

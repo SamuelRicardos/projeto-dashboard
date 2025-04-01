@@ -20,6 +20,7 @@ export default function ResetPassword() {
       toast.success("Email enviado! Verifique sua caixa de entrada.", {
         position: "top-right",
         style: { backgroundColor: "#22c55e", color: "#ffffff" },
+        duration: 2000
       });
 
       setTimeout(() => {
@@ -29,6 +30,7 @@ export default function ResetPassword() {
       toast.error("Erro ao enviar email. Verifique o email informado.", {
         position: "top-right",
         style: { backgroundColor: "#ef4444", color: "#ffffff" },
+        duration: 2000
       });
     } finally {
       setLoading(false);

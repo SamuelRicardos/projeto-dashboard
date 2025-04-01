@@ -36,6 +36,7 @@ export default function Cadastro() {
         description: `Seja bem-vindo, ${name}!`,
         position: "top-right",
         style: { backgroundColor: "#22c55e", color: "#ffffff" },
+        duration: 2000
       });
       
       setTimeout(() => router.push("/"), 2000);
@@ -45,6 +46,7 @@ export default function Cadastro() {
         description: "Verifique os dados e tente novamente.",
         position: "top-right",
         style: { backgroundColor: "#ef4444", color: "#ffffff" },
+        duration: 2000
       });
     } finally {
       setLoading(false);
