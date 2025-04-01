@@ -4,7 +4,7 @@ Este é um projeto de **Dashboard Financeiro** desenvolvido com [Next.js](https:
 
 ## Funcionalidades
 
-- 🔒 Autenticação de usuários (Cadastro & Login) com Firebase
+- 🔒 Autenticação de usuários (Cadastro & Login) com Firebase (Use esse usuário para acessar o dashboard, email: test@gmail.com, senha:123456)
 - 📊 Painel interativo para visualização financeira
 - 💳 Gerenciamento e acompanhamento de despesas
 - 📈 Visualização de dados com gráficos e tabelas
