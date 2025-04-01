@@ -27,7 +27,6 @@ export default function ThemeToggle() {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <div>
             <button
               onClick={handleToggle}
               className="relative w-14 h-8 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors m-4 shadow-lg"
@@ -40,17 +39,16 @@ export default function ThemeToggle() {
 
               <div className="relative w-full h-full flex items-center justify-between px-1">
                 {theme === "light" ? (
-                  <div className="flex justify-start w-full p-2 cursor-pointer">
+                  <div className="flex justify-start w-full p-1 cursor-pointer">
                     <Sun className="w-4 h-4 text-yellow-500 transition-all" />
                   </div>
                 ) : (
-                  <div className="flex justify-end w-full p-2 cursor-pointer">
+                  <div className="flex justify-end w-full p-1 cursor-pointer">
                     <Moon className="w-4 h-4 text-blue-500 transition-all" />
                   </div>
                 )}
               </div>
             </button>
-          </div>
         </TooltipTrigger>
         <TooltipContent>
           {theme === "light" ? "Modo Claro" : "Modo Escuro"}
