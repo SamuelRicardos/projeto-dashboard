@@ -36,7 +36,7 @@ export default function Dashboard() {
   return (
     <main className="sm:ml-14 p-4">
       <Sidebar />
-      <div className="flex justify-end mb-4">
+      <div className="hidden sm:flex justify-end mb-4">
         <ThemeToggle />
       </div>
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
