@@ -29,7 +29,7 @@ export default function ResetPassword() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
-        <h2 className="text-2xl font-bold text-center mb-6">Redefinir Senha</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Redefinir senha</h2>
         {message && <p className="text-green-500 text-sm text-center mb-4">{message}</p>}
         {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
 
@@ -44,10 +44,10 @@ export default function ResetPassword() {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition disabled:opacity-50"
+            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition disabled:opacity-50 cursor-pointer"
             disabled={loading}
           >
-            {loading ? "Enviando..." : "Redefinir Senha"}
+            {loading ? "Enviando..." : "Redefinir senha"}
           </button>
         </form>
 
