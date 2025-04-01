@@ -33,7 +33,7 @@ export default function ThemeToggle() {
               className="relative w-14 h-8 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors m-4 shadow-lg"
             >
               <div
-                className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
+                className={`absolute top-1 left-1 w-6 h-6 rounded-full transition-transform duration-300 ${
                   theme === "dark" ? "transform translate-x-6" : ""
                 }`}
               />
