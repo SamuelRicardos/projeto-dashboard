@@ -7,7 +7,7 @@ export function Sales() {
         <Card className="flex-1">
             <CardHeader>
                 <div className="flex items-center justify-center">
-                    <CardTitle className="text-lg sm:text-xl text-gray-800">
+                    <CardTitle className="text-lg sm:text-xl text-gray-800 dark:text-white select-none">
                         Últimos clientes
                     </CardTitle>
                     <CircleDollarSign className="ml-auto w-4 h-4"></CircleDollarSign>
