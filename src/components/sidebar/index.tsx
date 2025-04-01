@@ -9,6 +9,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { useRouter } from "next/navigation";
 import { DialogTitle } from "@/components/ui/dialog";
+import ThemeToggle from "../tema";
 
 export function Sidebar() {
     const router = useRouter();
@@ -18,7 +19,7 @@ export function Sidebar() {
 
             localStorage.removeItem('theme');
 
-            document.documentElement.classList.remove('dark'); 
+            document.documentElement.classList.remove('dark');
 
             await signOut(auth);
 
@@ -100,7 +101,7 @@ export function Sidebar() {
 
             {/* div mobile */}
             <div className="sm:hidden flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-                <header className="sticky top-0 z-30 flex h-14 items-center px-4 border-b bg-background gap-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+                <header className="sticky top-0 z-30 flex h-14 items-center px-4 border-b bg-background gap-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 w-full">
                     <Sheet>
                         <SheetTrigger asChild>
                             <Button size="icon" variant="outline" className="sm:hidden">
@@ -154,6 +155,9 @@ export function Sidebar() {
                         </SheetContent>
                     </Sheet>
                     <h2>Menu</h2>
+                    <div className="flex ml-auto">
+                        <ThemeToggle />
+                    </div>
                 </header>
             </div>
         </div>
