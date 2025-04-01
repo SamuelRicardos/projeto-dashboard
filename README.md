@@ -16,6 +16,8 @@ Este é um projeto de **Dashboard Financeiro** desenvolvido com [Next.js](https:
 
 📊 Recharts: Biblioteca utilizada para a criação de gráficos interativos e dinâmicos, permitindo visualizar dados financeiros de forma clara e intuitiva, facilitando a análise e tomada de decisões.
 
+🌙 Zustand (Tema Claro e Escuro): Utilizei o Zustand para gerenciar o estado da aplicação e permitir a troca entre os modos de tema claro e escuro. Com um simples store, a mudança de tema é realizada de forma eficiente, proporcionando uma experiência de usuário mais personalizada e moderna. Isso garante que a interface se adapte de acordo com as preferências do usuário, mantendo a consistência e performance em todos os dispositivos.
+
 ## Funcionalidades
 
 - 🔒 Autenticação de usuários (Cadastro & Login) com Firebase (Use esse usuário para acessar o dashboard, email: test@gmail.com, senha:123456)
