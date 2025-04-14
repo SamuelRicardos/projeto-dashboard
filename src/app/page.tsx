@@ -1,25 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, LoginSchemaType } from "@/schemas/loginSchema";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleLogin = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    setError(null);
-    setIsLoading(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginSchemaType>({
+    resolver: zodResolver(loginSchema),
+  });
 
+  const onSubmit = async (data: LoginSchemaType) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
       const user = userCredential.user;
 
       toast.success(`Bem-vindo(a), ${user.displayName || 'Visitante'}!`, {
@@ -29,15 +31,12 @@ export default function Home() {
       });
 
       router.push("/dashboard");
-    } catch (error) {
-      setError("Email ou senha incorretos.");
+    } catch {
       toast.error("Email ou senha incorretos.", {
         position: "top-right",
         style: { backgroundColor: "#ef4444", color: "#ffffff" },
         duration: 2000,
       });
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -45,18 +44,17 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
               id="email"
               type="email"
               placeholder="Digite seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email")}
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
             />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Senha</label>
@@ -64,33 +62,30 @@ export default function Home() {
               id="password"
               type="password"
               placeholder="Digite sua senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...register("password")}
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
             />
+            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
           </div>
-          {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
           <button
             type="submit"
-            className={`w-full py-3 rounded-lg transition cursor-pointer ${isLoading ? 'bg-blue-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`} 
-            disabled={isLoading}
+            className="w-full py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition cursor-pointer"
+            disabled={isSubmitting}
           >
-            {isLoading ? "Carregando..." : "Entrar"}
+            {isSubmitting ? "Carregando..." : "Entrar"}
           </button>
         </form>
         <p className="text-center text-sm mt-4">
           Não tem uma conta?
-          <span className="mx-1"></span>
           <button 
             onClick={() => router.push("/cadastro")}
-            className="text-blue-500 hover:underline cursor-pointer"
+            className="text-blue-500 hover:underline ml-1"
           >
             Cadastre-se
           </button>
         </p>
         <div className="text-center mt-4">
-          <button onClick={() => router.push("/resetpassword")} className="text-blue-500 hover:underline text-sm cursor-pointer">
+          <button onClick={() => router.push("/resetpassword")} className="text-blue-500 hover:underline text-sm">
             Esqueci minha senha
           </button>
         </div>
