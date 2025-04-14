@@ -79,13 +79,13 @@ export default function Home() {
           Não tem uma conta?
           <button 
             onClick={() => router.push("/cadastro")}
-            className="text-blue-500 hover:underline ml-1"
+            className="text-blue-500 hover:underline ml-1 cursor-pointer"
           >
             Cadastre-se
           </button>
         </p>
         <div className="text-center mt-4">
-          <button onClick={() => router.push("/resetpassword")} className="text-blue-500 hover:underline text-sm">
+          <button onClick={() => router.push("/resetpassword")} className="text-blue-500 hover:underline text-sm cursor-pointer">
             Esqueci minha senha
           </button>
         </div>
